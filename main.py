@@ -40,10 +40,10 @@ num_px = train_info.features["image"].shape[1]
 train_set_x_orig = []     #Holds the actual picture value of training set
 test_set_x_orig = []      #Holds the actual picture value of testing set
 
-train_set_y= []           #Holds the label value of training set 0 is horse and 1 human
-test_set_y= []            #Holds the label value of testing set 0 is horse and 1 human
+train_set_y = []           #Holds the label value of training set 0 is horse and 1 human
+test_set_y = []            #Holds the label value of testing set 0 is horse and 1 human
 
-ds =train_ds.take(m_train)
+ds = train_ds.take(m_train)
 for image, label in tfds.as_numpy(ds):
     train_set_x_orig.append(image)
     train_set_y.append(label)
@@ -56,8 +56,8 @@ for image, label in tfds.as_numpy(ds):
 train_set_x_orig = np.array(train_set_x_orig)
 test_set_x_orig = np.array(test_set_x_orig)
 
-train_set_y= np.array(train_set_y)
-test_set_y= np.array(test_set_y)
+train_set_y = np.array(train_set_y)
+test_set_y = np.array(test_set_y)
 
 # Flatten Data
 train_set_x_flatten = train_set_x_orig.reshape(m_train, -1).T
