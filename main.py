@@ -43,7 +43,7 @@ test_set_x_orig = []      #Holds the actual picture value of testing set
 train_set_y= []           #Holds the label value of training set 0 is horse and 1 human
 test_set_y= []            #Holds the label value of testing set 0 is horse and 1 human
 
-ds = train_ds.take(m_train)
+ds =train_ds.take(m_train)
 for image, label in tfds.as_numpy(ds):
     train_set_x_orig.append(image)
     train_set_y.append(label)
@@ -118,4 +118,24 @@ def initialize_with_zeros(dim):
     assert(isinstance(b, float) or isinstance(b, int))
 
     return w, b
+
+def propagate(w, b, X, Y):
+    """
+        Implement the cost function and its gradient for the propagation
+
+        Arguments:
+        w -- weights, a numpy array of size (num_px * num_px * 3, 1)
+        b -- bias, a scalar
+        X -- data of size (num_px * num_px * 3, number of examples)
+        Y -- true "label" vector (containing 0 if non-cat, 1 if cat) of size (1, number of examples)
+
+        Return:
+        cost -- negative log-likelihood cost for logistic regression
+        dw -- gradient of the loss with respect to w, thus same shape as w
+        db -- gradient of the loss with respect to b, thus same shape as b
+
+        """
+    m = X.shape[1]
+    return
+
 
