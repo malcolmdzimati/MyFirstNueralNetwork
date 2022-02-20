@@ -234,3 +234,52 @@ def predict(w, b, X):
         assert(Y_prediction.shape == (1, m))
 
     return Y_prediction
+
+def model(X_train, Y_train, X_test, Y_test, num_iterations = 2000, learning_rate = 0.5, print_cost = False):
+    """
+    Builds the logistic regression model by calling the functions implemented previously
+
+    Arguments:
+    :param X_train:
+    :param Y_train:
+    :param X_test:
+    :param Y_test:
+    :param num_iterations:
+    :param learning_rate:
+    :param print_cost:
+
+    Returns:
+    :return d: dictionary containing information about the model
+    """
+
+    # initialize parameters with zeros
+    w, b = initialize_with_zeros(X_train.shape[0])
+
+    # Gradient descent
+    parameters, grads, costs = optimize(w, b, X_train, Y_train, num_iterations, learning_rate, print_cost = False)
+
+    # Retrieve parameters w and b dictionary "parameters"
+    w = parameters["w"]
+    b = parameters["b"]
+
+    # Predict test/train set examples
+    Y_prediction_test = predict(w, b, X_test)
+    Y_prediction_train = predict(w, b, X_train)
+
+    # Print train/test Errors
+    print("train accuracy: {} %".format(100 - np.mean(np.abs(Y_prediction_train - Y_train)) * 100))
+    print("test accuracy: {} %".format(100 - np.mean(np.abs(Y_prediction_test - Y_test)) * 100))
+
+    d = {"costs": costs,
+         "Y_prediction_test": Y_prediction_test,
+         "Y_prediction_train": Y_prediction_train,
+         "w": w,
+         "b": b,
+         "learning_rate": learning_rate,
+         "num_iterations": num_iterations}
+
+    return d
+
+
+
+d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = 1000, learning_rate = 0.005, print_cost = True)
