@@ -5,7 +5,9 @@ A nueral network built from scratch used to recoginse with an image has a horse 
 Numpy -- for all the mathematical and statistic element of the project.
 
 Scipy -- for additional mathematical functions
+
 Tensorflow database -- used the tensorflow API to get a large amount of good labeled data to train and test the API
+
 Tkinter -- GUI to test more images
 
 # Current progress:
